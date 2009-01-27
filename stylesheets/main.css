@@ -1,0 +1,21 @@
+body {
+    font-family: Lucida Grande, sans-serif;
+    background-color: #dddddd;
+    }
+.message {
+    border: 1px black solid;
+    padding: 2px;
+    margin: 2px;
+    }
+.printing {
+    font-size: 10pt;
+    }
+.alt {
+    background: #ffffff;
+    }
+a, a:visited {
+    color: #000099; 
+    }
+a:hover {
+    text-decoration: none;
+    }
