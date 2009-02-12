@@ -5,8 +5,8 @@
     <script type="text/javascript">
        google.load("jquery", "1.3.1");
     </script>
-    <script type="text/javascript" src="functions.js"></script>
-    <script type="text/javascript" src="jquery.color.js"></script>
+    <script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="js/jquery.color.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
         $('.message:even').addClass("alt");
@@ -24,6 +24,7 @@
   </head>
 
   <body>
+    <h1 class="printing">Latest stock update: {{ stock }} for {{ ticker }}</h1>
     <h1 class="printing">Printing {{ count }} results matching {{ query }}</h1>
     {% for status in statuses %}
       <div class="message">

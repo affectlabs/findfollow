@@ -1,0 +1,43 @@
+<html>
+    <head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+    <script src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+       google.load("jquery", "1.3.1");
+    </script>
+    <script type="text/javascript" src="/js/functions.js"></script>
+    <script type="text/javascript" src="/js/jquery.color.js"></script>
+    <script type='text/javascript'>
+       google.load('visualization', '1', {'packages':['annotatedtimeline']});
+       google.setOnLoadCallback(drawChart);
+       function drawChart() {
+         var data = new google.visualization.DataTable();
+         data.addColumn('date', 'Date');
+         data.addColumn('number', 'Tweets');
+         data.addColumn('string', 'title1');
+         data.addColumn('string', 'text1');
+         data.addColumn('number', 'Stock Price');
+         data.addRows(2000);
+        {% for tweet in tweets %}
+         data.setValue({{ forloop.counter }}, 0, new Date('{{ tweet.time|date:"F j, Y H:i:s" }}'));
+         data.setValue({{ forloop.counter }}, 1, {{ tweet.count }});
+        {% endfor %}
+        {% for stock in stockquotes %}
+         data.setValue({{ forloop.counter }}+1000, 0, new Date('{{ stock.time|date:"F j, Y H:i:s" }}'));
+         data.setValue({{ forloop.counter }}+1000, 4, {{ stock.value }});
+        {% endfor %}
+        var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('chart_div'));
+        chart.draw(data, {displayAnnotations: true, allowHtml: true, displayAnnotationsFilter: true});
+      }
+    </script>
+
+  
+  </head>
+
+  <body>
+    <h1>benchmark.stock</h1>
+    <div id='chart_div' style='width: 700px; height: 240px;'></div>
+    <h1 class="printing">Searching {{ ticker }} since {{ since }}</h1>
+
+  </body>
+</html>

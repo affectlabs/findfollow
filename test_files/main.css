@@ -1,15 +1,12 @@
 body {
     font-family: Lucida Grande, sans-serif;
-    background-color: #ffffff;
+    background-color: #dddddd;
     }
 .message {
     border: 1px black solid;
     padding: 2px;
     margin: 2px;
     }
-h1 {
-    font-family: arial, sans-serif; font-size: 16pt;
-}
 .printing {
     font-size: 10pt;
     }
